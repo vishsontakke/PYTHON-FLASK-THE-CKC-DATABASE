@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="../static/script.js"></script>
+</head>
+
+<body>
+	<header>
+		<div id="logo"><img src="../static/ckc.jpeg"><font color="red"><font face="algerian">The Champions Karate Club</div></font></font>
+		<nav>  
+			<ul>
+				<li><a href="{{url_for('index')}}">Home</a>
+				<li><a href="{{url_for('contact')}}">Contact</a>
+				<li><a href="{{url_for('about')}}">About</a>
+				<li><a href="{{url_for('allusers')}}">All Students</a>
+				<li><a href="{{url_for('search')}}">Search User</a>
+				
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<strong>This Page is for all users</strong>
+	</section>
+	
+	<section>
+	<table>
+	
+	<form method="POST" action="{{url_for('create')}}">
+	    <th><label for="uname">Student Name :</label></th>
+		<tr><input type="text" name="uname" id="uname"/></tr><br><br><br>
+		
+		<th><label for="pwd">Age     :  </label></th>
+		<tr><input type="number" name="pwd" id="pwd"/></tr><br><br>
+		
+		<th><label for="contact">Achivement   :  </label></th>
+		<tr><input type="text" name="contact" id="contact"/></tr><br><br>
+		
+		
+	
+	</form>	
+	</table>
+	<input type="submit" name="add user" value="Add Student"/>
+	
+	</section>
+	<section id="pageContent">
+		<main role="main">
+		<head>
+		<style>
+		table,th,td{
+		border: 1px solid red;
+		}
+		</style>
+		</head>
+		
+		<table border=1px solid black; width="400">
+		<tr>
+		
+		    <th>Name</th>
+			<th>Age</th>
+			<th>Belt</th>
+			
+			<th colspan="2">action</th>		
+		</tr>
+		
+		{% for row in userdata %}
+		<tr align="center">
+		    <td>{{row[1]}}</td>
+			<td>{{row[2]}}</td>
+			<td>{{row[3]}}</td>
+			
+			<td><a href="{{url_for('edit',id=row[0])}}">Edit</a></td>
+			<td><a href="{{url_for('delete',id=row[0])}}">Delete</a></td>
+		</tr>
+		{% endfor %}
+		
+	    </table>
+		<div><id="logo"><img src="../static/tc.jpeg" width=500></div>
+		
+		</main>
+		<aside>
+			
+			
+		</aside>
+	</section>
+	<footer>
+		<p>&copy; You can copy, edit and publish this template but please leave a link to our website | <a href="https://html5-templates.com/" target="_blank" rel="nofollow">HTML5 Templates</a></p>
+		<address>
+			Contact: <a href="mailto:me@example.com">Mail me</a>
+		</address>
+	</footer>
+
+
+</body>
+
+</html>
